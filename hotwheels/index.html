@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feliz día de los Carritos Hot Wheels</title>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css?v=18">
+</head>
+<body>
+<canvas id="estrellas"></canvas>
+
+<section id="portada">
+  <div class="tablero">
+    <svg class="medidor" id="medidor" viewBox="0 0 220 140" role="progressbar" aria-label="Carga del motor" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <path class="medidor-base" d="M24 116 A86 86 0 0 1 196 116"></path>
+      <path class="medidor-carga" id="arcoCarga" pathLength="100" d="M24 116 A86 86 0 0 1 196 116"></path>
+    </svg>
+    <div class="lectura"><span id="velocidad">0</span><small>KM/H</small></div>
+    <button id="pistaInicio" aria-label="Tocar para arrancar el motor">
+      <span class="carro-inicio" id="carroInicio">🏎️</span>
+    </button>
+  </div>
+  <p id="textoInicio">Toca para arrancar el motor</p>
+</section>
+
+<section id="galaxia" hidden>
+  <h1 id="titulo"></h1>
+  <main class="escena" id="escena">
+    <div class="camara">
+      <div class="mundo" id="mundo">
+        <canvas id="suelo" width="1000" height="1000"></canvas>
+      </div>
+    </div>
+  </main>
+  <p class="pista">Toca una foto para abrir su mensaje</p>
+</section>
+
+<div class="modal" id="modal" hidden>
+  <div class="paquete" id="paquete">
+    <div class="logo">HOT WHEELS</div>
+    <p id="mensaje"></p>
+    <small>Toca para cerrar</small>
+  </div>
+</div>
+
+<script src="script.js?v=9"></script>
+</body>
+</html>
