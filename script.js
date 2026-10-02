@@ -99,8 +99,27 @@ RAMOS.forEach(n => quitarFondo("imagenes/" + n).then(u => { if (u) ramosUrl[n] =
 
 /* ---------- Portada ---------- */
 let arrancado = false;
+const musica = $("musica"), controlMusica = $("controlMusica");
+function actualizarControlMusica(){
+  const activa = !musica.paused;
+  controlMusica.textContent = activa ? "♫ Música: activa" : "♫ Música: silenciada";
+  controlMusica.setAttribute("aria-label", activa ? "Silenciar música" : "Activar música");
+  controlMusica.setAttribute("aria-pressed", String(activa));
+}
+function iniciarMusica(){
+  musica.volume = .35;
+  musica.play().then(() => {
+    controlMusica.hidden = false;
+    actualizarControlMusica();
+  }).catch(() => {});
+}
+controlMusica.addEventListener("click", () => {
+  if (musica.paused) musica.play().then(actualizarControlMusica).catch(() => {});
+  else { musica.pause(); actualizarControlMusica(); }
+});
 $("pistaInicio").addEventListener("click", () => {
   if (arrancado) return; arrancado = true;
+  iniciarMusica();
   $("portada").classList.add("arrancando");
   $("textoInicio").textContent = "Arrancando motor...";
   $("pistaInicio").disabled = true;
